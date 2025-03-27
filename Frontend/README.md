@@ -3,4 +3,4 @@
 - Tại thư mục Frontend, mở terminal
 - Chạy lệnh npm install
 ## Khởi động Frontend
-npm run dev
+- Thực hiện npm run dev và truy cập http://localhost:3001/
