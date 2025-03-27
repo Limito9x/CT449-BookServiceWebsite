@@ -18,8 +18,10 @@
                 </SelectContent>
             </Select>
         </span>
-        <DataTable @updated="fetchBorrow" :status="selectedStatus" :type="'borrow'" :columns="borrowColumns"
-            :data="borrowData"></DataTable>
+        <div class="container">
+            <DataTable @updated="fetchBorrow" :status="selectedStatus" :type="'borrow'" :columns="borrowColumns"
+                :data="borrowData"></DataTable>
+        </div>
     </div>
 </template>
 
@@ -85,3 +87,23 @@ const borrowData = computed(() => {
         borrow.tensach.toLowerCase().includes(searchQuery.value.toLowerCase()))
 })
 </script>
+<style scoped>
+.container {
+    max-width: 1000px;
+    width: 90%;
+    overflow-x: auto;
+    /* Thêm thanh cuộn ngang khi nội dung quá dài */
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Responsive cho ô tìm kiếm */
+@media (max-width: 768px) {
+    .search-container {
+        width: 90%;
+    }
+}
+</style>

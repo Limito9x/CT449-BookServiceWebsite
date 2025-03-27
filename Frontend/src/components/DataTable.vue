@@ -1,6 +1,6 @@
 <template>
-    <div class="w-full overflow-x-auto">
-        <Table class="min-w-[700px] max-w-[1000px] mx-auto border border-gray-500 rounded-lg shadow-md">
+    <div class="table-container">
+        <Table class="max-w-full mx-auto border border-gray-500 rounded-lg shadow-md">
             <TableHeader>
                 <TableRow>
                     <TableHead v-for="column in props.columns" :key="column.key" :style="{ maxWidth: column.maxWidth }"
@@ -94,6 +94,10 @@ const showAction = () => {
 }
 </script>
 <style scoped>
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+}
 * {
     font-size: 18px;
 }
