@@ -25,7 +25,7 @@
         </Button>
         <Button class="bg-red-600 hover:bg-red-700" @click="confirmDelete(book.masach, book.tensach)">Xóa</Button>
     </div>
-    <Button v-else @click="borrow(book.masach)" class="mt-3 bg-green-600 hover:bg-green-500">Mượn
+    <Button v-if="!authStore.isStaff()" @click="borrow(book.masach)" class="mt-3 bg-green-600 hover:bg-green-500">Mượn
         sách</Button>
     <GenericDialog :title="selectedTitle" v-model:open="dialogOpen" :data="book" @save="updateBook"
         @fileSelected="getUpdatedFile" :fields="fields">
