@@ -17,9 +17,9 @@
             </div>
         </div>
     </div>
-    <div v-if="authStore.isStaff()" class="flex gap-2 mt-3">
+    <div v-if="authStore.isAdmin()" class="flex gap-2 mt-3">
         <Button class="bg-blue-600 hover:bg-blue-700" @click="toggleDialog()">Cập nhật</Button>
-        <Button v-if="authStore.isAdmin()" class="suggest bg-yellow-500 hover:bg-yellow-600 " @click="toggleSuggest()">
+        <Button class="suggest bg-yellow-500 hover:bg-yellow-600 " @click="toggleSuggest()">
             <p v-if="!book.goiy">Thêm vào gợi ý</p>
             <p v-else>Bỏ gợi ý</p>
         </Button>
@@ -35,7 +35,7 @@
 <script setup>
 import GenericDialog from '@/components/GenericDialog.vue';
 import Label from '@/components/ui/label/Label.vue';
-import { ref, onMounted,computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import Button from '@/components/ui/button/Button.vue';
 import SachService from '@/services/sach.service';
 import muonsachService from '@/services/muonsach.service';
@@ -160,9 +160,11 @@ const borrow = async (masach) => {
     text-align: left;
     font-size: 22px;
 }
-.suggest *{
+
+.suggest * {
     margin: auto;
 }
+
 @media (max-width: 768px) {
     .profile-container {
         flex-direction: column;

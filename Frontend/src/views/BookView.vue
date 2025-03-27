@@ -82,12 +82,12 @@
 
             <!-- Nút hành động -->
 
-            <div v-if="authStore.isStaff()" class="flex gap-2 w-full mt-auto">
+            <div v-if="authStore.isAdmin()" class="flex gap-2 w-full mt-auto">
                 <Button class="flex-1 bg-blue-600 hover:bg-blue-700" @click="toggleDialog(book)">Cập nhật</Button>
                 <Button class="flex-1 bg-red-600 hover:bg-red-700"
                     @click="confirmDelete(book.masach, book.tensach)">Xóa</Button>
             </div>
-            <Button v-else @click="borrow(book.masach)" class="mt-auto bg-green-600 hover:bg-green-500">Mượn
+            <Button v-if="!authStore.isStaff()" @click="borrow(book.masach)" class="mt-auto bg-green-600 hover:bg-green-500">Mượn
                 sách</Button>
         </li>
 

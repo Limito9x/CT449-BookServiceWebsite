@@ -43,7 +43,7 @@
             <p class="text-sm text-gray-600 mb-0">{{ nxb.diachi }}</p>
 
             <!-- Nút hành động -->
-            <div v-if="authStore.isStaff()" class="flex gap-2 w-full mt-auto">
+            <div v-if="authStore.isAdmin()" class="flex gap-2 w-full mt-auto">
                 <Button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg"
                     @click="toggleDialog(nxb)">
                     Cập nhật
