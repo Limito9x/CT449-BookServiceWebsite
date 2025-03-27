@@ -13,19 +13,19 @@ exports.addStaff = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-  const { hotennv, dienthoai: sodienthoai, matkhau } = req.body;
+  const { hotennv, dienthoai: sodienthoai, matkhau, chucvu } = req.body;
   try {
     if (await existPhoneRegister(sodienthoai)) {
       return res.status(400).json({ message: "Số điện thoại đã được sử dụng" });
     }
     // Mã hóa mật khẩu
     const hashedPassword = await bcrypt.hash(matkhau, 10);
-
     // Tạo nhân viên mới
+    const role = chucvu === "Quản trị viên" ? "Quản trị viên" : "Nhân viên";
     const newNhanVien = new NhanVien({
       hotennv,
       sodienthoai,
-      chucvu: "Nhân viên",
+      chucvu: role,
       password: hashedPassword,
     });
     await newNhanVien.save();
